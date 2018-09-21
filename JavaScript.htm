@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>My Calculator</title>
+<style>
+table{
+border:2px solid black; 
+width:30%;
+background-color:grey;
+}
+td{
+padding:20px;
+height:100%;
+color:white;
+}
+input{
+width:100%;
+height:200%;
+background-color:white;
+}
+button{
+width:100%;
+height:200%;
+}
+button:hover{
+color: #8AC007;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+var num;
+var ope=0;
+var equ=0;
+function addition() {
+  var y = document.getElementById("txt1").value;
+  var z = document.getElementById("txt2").value;
+  var x = +y + +z;
+  document.getElementById("Example").innerHTML = x;
+}
+function pressOperator(btn_id)
+{
+     num=document.getElementById("txt1").value;
+     
+     if(btn_id=="btn_+")
+    	 {
+     ope=1;
+    	 }
+     else if(btn_id =="btn_-")
+    	 {
+    	 ope=2;
+    	 }
+		  else if(btn_id =="btn_*")
+    	 {
+    	 ope=3;
+    	 }
+		  else if(btn_id =="btn_/")
+    	 {
+    	 ope=4;
+    	 }
+		 else if(btn_id =="btn_%")
+    	 {
+    	 ope=5;
+    	 }
+      
+     
+}
+function pressEqual(btn_id)
+{
+     var tot=document.getElementById("txt1").value;
+    
+     
+     if(ope=="1")
+     {
+    	 tot=+num + +tot;
+     }
+     else if(ope=="2")
+    	 {
+    	 tot=+num - +tot;
+    	 }
+		 else if(ope=="3")
+    	 {
+    	 tot=+num * +tot;
+    	 }
+		 else if(ope=="4")
+    	 {
+    	 tot=+num / +tot;
+    	 }
+		  else if(ope=="5")
+    	 {
+    	 tot=+num % +tot;
+    	 }
+     document.getElementById("txt1").value = tot;
+     num=0;
+    
+}
+
+
+function cle(value){
+		document.form1.text1.value =0;
+	}
+	
+	
+	
+function pressNumber(btn_id)
+{
+	
+	var str=document.getElementById("txt1").value;
+
+	var btn=document.getElementById(btn_id).value;
+
+if(str=='0' || str=='' || str==null || ope!=0)
+	{
+	
+	   str=btn;
+	 
+	}
+else
+	{
+	
+	str=str+btn;
+	}
+	
+	document.getElementById("txt1").value = str;
+
+}
+</script>
+</body>
+<form name="form1">
+	<table align="center">
+	<tr><td colspan="4" align="center">SIMPLE CALCULATOR</td></tr>
+		<tr><td colspan="4">
+   <input disabled="disabled" style="text-align:right" type="text" id="txt1" name="text1" value="0"  />
+   <!--  Enter second number:
+ <input type="text" id="txt2" name="text2" value="2">
+  -->
+  </td> </tr>
+  <tr>
+  <td> <input onclick="pressNumber(this.id);" type="button" id="btn_1" name="btn_1" value="1" ></td>
+   <td><input onclick="pressNumber(this.id);" type="button" id="btn_2" name="btn_2" value="2" ></td>
+   <td><input onclick="pressNumber(this.id);" type="button" id="btn_3" name="btn_3" value="3" ></td>
+   <td><input onclick="pressNumber(this.id);" type="button" id="btn_4" name="btn_4" value="4" ></td>
+   </tr>
+   
+   <tr>
+   <td><input onclick="pressNumber(this.id);" type="button" id="btn_5" name="btn_5" value="5" ></td>
+   <td><input onclick="pressNumber(this.id);" type="button" id="btn_6" name="btn_6" value="6" ></td>
+   <td><input onclick="pressNumber(this.id);" type="button" id="btn_7" name="btn_7" value="7" ></td>
+   <td><input onclick="pressNumber(this.id);" type="button" id="btn_8" name="btn_8" value="8" ></td>
+   
+   </tr>
+   
+   <tr>
+   
+   <td><input onclick="pressNumber(this.id);" type="button" id="btn_9" name="btn_9" value="9" ></td>
+   <td><input onclick="pressNumber(this.id);" type="button" id="btn_0" name="btn_0" value="0" ></td>
+    <td><input onclick="pressOperator(this.id);" type="button" id="btn_+" name="btn_+" value="+" ></td>
+    <td><input onclick="pressOperator(this.id);" type="button" id="btn_-" name="btn_-" value="-" ></td>
+	
+	</tr>
+	
+	<tr>
+	<td><input onclick="pressOperator(this.id);" type="button" id="btn_*" name="btn_*" value="*" ></td>
+	<td><input onclick="pressOperator(this.id);" type="button" id="btn_/" name="btn_/" value="/" ></td>
+	<td><input onclick="pressOperator(this.id);" type="button" id="btn_%" name="btn_%" value="%" ></td>
+    <td><input onclick="pressEqual(this.id);" type="button" id="btn_=" name="btn_=" value="=" ></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<button type = "button" onclick="cle(value)" value="">C</button></td>
+		</tr>
+	</table>
+	</form>
+	
+
+<p id="Example"></p>
+</html>
